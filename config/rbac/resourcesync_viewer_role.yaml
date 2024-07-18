@@ -1,0 +1,27 @@
+# permissions for end users to view resourcesyncs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: resourcesync-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: resourcesyncoperator
+    app.kubernetes.io/part-of: resourcesyncoperator
+    app.kubernetes.io/managed-by: kustomize
+  name: resourcesync-viewer-role
+rules:
+- apiGroups:
+  - sync.resourcesyncoperator.com
+  resources:
+  - resourcesyncs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - sync.resourcesyncoperator.com
+  resources:
+  - resourcesyncs/status
+  verbs:
+  - get

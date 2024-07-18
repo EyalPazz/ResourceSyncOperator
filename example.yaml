@@ -1,0 +1,11 @@
+apiVersion: sync.resourcesyncoperator.com/v1alpha1
+kind: ResourceSync
+metadata:
+  name: example
+spec:
+  route:
+    name: main-client-route
+    namespace: heroes-live-on-production
+  secret:
+    name: heroes-tls-2
+    namespace: cert-manager

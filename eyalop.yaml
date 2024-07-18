@@ -1,0 +1,9 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: eyal-operators
+  namespace: openshift-marketplace
+spec:
+  displayName: Eyal Operators
+  image: docker.io/eyalhilma/resourcesyncoperator-catalog:v0.0.28
+  sourceType: grpc
