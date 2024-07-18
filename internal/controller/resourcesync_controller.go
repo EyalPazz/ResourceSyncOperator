@@ -132,7 +132,7 @@ func (r *ResourceSyncReconciler) Reconcile(ctx context.Context, req ctrl.Request
 
     if secretData["tls.key"] != route.Spec.TLS.Key {
         route.Spec.TLS.Key = secretData["tls.key"]
-        err = r.Status().Update(ctx, resourcesync)
+        err = r.Update(ctx, resourcesync)
         if err != nil {
             return ctrl.Result{}, err
         }
@@ -151,7 +151,7 @@ func (r *ResourceSyncReconciler) Reconcile(ctx context.Context, req ctrl.Request
 
     if secretData["tls.crt"] != route.Spec.TLS.Certificate {
         route.Spec.TLS.Certificate = secretData["tls.crt"]
-        err = r.Status().Update(ctx, resourcesync)
+        err = r.Update(ctx, resourcesync)
         if err != nil {
             return ctrl.Result{}, err
         }

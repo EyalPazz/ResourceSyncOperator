@@ -32,7 +32,7 @@ metadata:
   namespace: openshift-marketplace
 spec:
   displayName: Eyal Operators
-  image: docker.io/eyalhilma/resourcesyncoperator-catalog:v0.0.28
+  image: docker.io/eyalhilma/resourcesyncoperator-catalog:v0.0.29
   sourceType: grpc
 ```
 
