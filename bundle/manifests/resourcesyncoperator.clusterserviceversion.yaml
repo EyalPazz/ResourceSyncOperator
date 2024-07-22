@@ -21,10 +21,10 @@ metadata:
         }
       ]
     capabilities: Basic Install
-    createdAt: "2024-07-18T08:07:52Z"
+    createdAt: "2024-07-22T09:00:52Z"
     operators.operatorframework.io/builder: operator-sdk-v1.35.0
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v4
-  name: resourcesyncoperator.v0.0.28
+  name: resourcesyncoperator.v0.0.31
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -170,7 +170,7 @@ spec:
                 - --leader-elect
                 command:
                 - /manager
-                image: eyalhilma/resourcesyncoperator:0.0.28
+                image: eyalhilma/resourcesyncoperator:0.0.31
                 livenessProbe:
                   httpGet:
                     path: /healthz
@@ -257,4 +257,4 @@ spec:
   maturity: alpha
   provider:
     name: Eyal
-  version: 0.0.28
+  version: 0.0.31

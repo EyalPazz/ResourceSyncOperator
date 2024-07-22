@@ -81,7 +81,7 @@ func (r *ResourceSyncReconciler) Reconcile(ctx context.Context, req ctrl.Request
             Reason: "UnableToRetrieveRoute",
             Message: err.Error(),
         })
-        r.Update(ctx, route)
+        r.Status().Update(ctx, resourcesync)
 		return ctrl.Result{}, err
 	}
 
@@ -98,7 +98,7 @@ func (r *ResourceSyncReconciler) Reconcile(ctx context.Context, req ctrl.Request
             Reason: "UnableToRetrieveSecret",
             Message: err.Error(),
         })
-        r.Update(ctx, route)
+        r.Status().Update(ctx, resourcesync)
 		return ctrl.Result{}, err
 	}
 
@@ -115,7 +115,7 @@ func (r *ResourceSyncReconciler) Reconcile(ctx context.Context, req ctrl.Request
             Reason: "TLSKeyNotFound",
             Message: "tls.key field does not exist in the given secret",
         })
-        r.Update(ctx, route)
+        r.Status().Update(ctx, resourcesync)
 		return ctrl.Result{}, errors.New("tls.key field does not exist in the given secret")
 	}
 
@@ -126,13 +126,13 @@ func (r *ResourceSyncReconciler) Reconcile(ctx context.Context, req ctrl.Request
             Reason: "TLSCertificateNotFound",
             Message: "tls.crt field does not exist in the given secret",
         })
-        r.Update(ctx, resourcesync)
+        r.Status().Update(ctx, resourcesync)
 		return ctrl.Result{}, errors.New("tls.crt field does not exist in the given secret")
 	}
 
     if secretData["tls.key"] != route.Spec.TLS.Key {
         route.Spec.TLS.Key = secretData["tls.key"]
-        err = r.Update(ctx, resourcesync)
+        err = r.Update(ctx, route)
         if err != nil {
             return ctrl.Result{}, err
         }
@@ -151,7 +151,7 @@ func (r *ResourceSyncReconciler) Reconcile(ctx context.Context, req ctrl.Request
 
     if secretData["tls.crt"] != route.Spec.TLS.Certificate {
         route.Spec.TLS.Certificate = secretData["tls.crt"]
-        err = r.Update(ctx, resourcesync)
+        err = r.Update(ctx, route)
         if err != nil {
             return ctrl.Result{}, err
         }

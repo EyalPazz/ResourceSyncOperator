@@ -5,7 +5,7 @@ metadata:
 spec:
   route:
     name: superadmin-client-route
-    namespace: heroes-live-on-production
+    namespace: after-me-staging
   secret:
     name: heroes-tls
     namespace: cert-manager
